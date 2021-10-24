@@ -16,6 +16,10 @@ export default function App() {
     }
   }, []);
 
+  useEffect(() => {
+    localStorage.setItem('contacts', JSON.stringify(contacts));
+  }, [contacts]);
+
   const formSubmitHandler = data => {
     const allReadyPresentContact = contacts.some(
       elem => elem.name.toLowerCase() === data.name.toLowerCase(),
