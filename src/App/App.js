@@ -3,17 +3,18 @@ import './App.css';
 import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
-import dataContacts from '../JsonFile/contacts.json';
+import contacts from '../JsonFile/contacts.json';
 
 export default function App() {
-  const [contacts, setContacts] = useState(() => {
-    return JSON.parse(window.localStorage.getItem('contacts') ?? dataContacts);
-  });
+  const [contacts, setContacts] = useState([...contacts]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
-    window.localStorage.setItem('contacts', JSON.stringify(contacts));
-  }, [contacts]);
+    const parsedContacts = JSON.parse(localStorage.getItem('contacts'));
+    if (parsedContacts) {
+      setContacts(parsedContacts);
+    }
+  }, []);
 
   const formSubmitHandler = data => {
     const allReadyPresentContact = contacts.some(
@@ -24,11 +25,11 @@ export default function App() {
       return alert(`${data.name} is already in contacts.`);
     }
 
-    setContacts([data, ...contacts]);
+    setContacts([...contacts, data]);
   };
 
   const handleFilterChange = e => {
-    setFilter({ filter: e.target.value });
+    setFilter(e.target.value);
   };
 
   const handleFilterContact = () => {
