@@ -6,7 +6,7 @@ import ContactList from '../components/ContactList/ContactList';
 import contacts from '../JsonFile/contacts.json';
 
 export default function App() {
-  const [contacts, setContacts] = useState([...contacts]);
+  const [contacts, setContacts] = useState([]);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
