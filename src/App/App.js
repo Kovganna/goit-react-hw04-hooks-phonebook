@@ -3,10 +3,10 @@ import './App.css';
 import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
-import contacts from '../JsonFile/contacts.json';
+import dataContacts from '../JsonFile/contacts.json';
 
 export default function App() {
-  const [contacts, setContacts] = useState([]);
+  const [contacts, setContacts] = useState(dataContacts);
   const [filter, setFilter] = useState('');
 
   useEffect(() => {
