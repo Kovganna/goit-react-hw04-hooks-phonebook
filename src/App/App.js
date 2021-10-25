@@ -3,7 +3,7 @@ import './App.css';
 import ContactForm from '../components/ContactForm/ContactForm';
 import Filter from '../components/Filter/Filter';
 import ContactList from '../components/ContactList/ContactList';
-import dataContacts from '../JsonFile/contacts.json';
+import dataContacts from '../jsonFile/contacts.json';
 
 export default function App() {
   const [contacts, setContacts] = useState(dataContacts);
